@@ -1,26 +1,5 @@
-class Cliente {
-    nome;
-    cpf;
-
-}
-
-
-class ContaCorrente {
-    agencia;
-    _saldo = 0; //Por convensão da comunidade a variavel com _UNDERLINE na frente é mexer para acessa la apenas dentro da classe
-
-    sacar(valor) { //ISTO É UM MÉTODO COM SEU PARAMETRO DECLARADO COMO "VALOR"
-        if (this._saldo >= valor) { // O "THIS" REFERE SE AQUELA CONTA ESPECIFICA
-            this._saldo -= valor;
-            return valor;
-        }
-    }
-
-    depositar(valor) {
-        if (valor <= 0) return; //CLEANCODE: fazer a lógica do que não fazer e colocar um RETURN, o IF termina e faz a operaçãp seguinte
-        this._saldo += valor;
-        }
-    }
+import {Cliente} from "./Cliente.js"  // O IMPORT serve para importar a classe com seu import {Cliente} from "./Cliente"  // O IMPORT serve para importar a classe com 
+import {ContaCorrente} from "./ContaCorrente.js"   
 
 const cliente1 = new Cliente();
 cliente1.nome = "Pedro";
@@ -34,6 +13,8 @@ cliente2.cpf = 44455566677;
 
 const contaCorrentePedro = new ContaCorrente();
 contaCorrentePedro.agencia = 1001;
+contaCorrentePedro.cliente = cliente1;
+
 
 contaCorrentePedro.depositar(-100);
 contaCorrentePedro.depositar(100);
@@ -44,5 +25,4 @@ console.log(valorSacado);
 
 
 console.log(contaCorrentePedro)
-
 
